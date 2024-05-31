@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CALCULATOR</title>
+    <style>
+        .container {
+            width: 100%;
+            height: 100vh;
+            background: black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .calculator {
+            background: white;
+            padding: 20px;
+            border-radius: 30px;
+        }
+
+        .calculator input {
+            border: 3px solid black;
+            outline: 0;
+            width: 60px;
+            height: 50px;
+            border-radius: 15px;
+            box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(230, 226, 226, 0.2);
+            background: transparent;
+            color: black;
+            cursor: pointer;
+            margin: 5px;
+            transition: background-color 0.3s, box-shadow 0.3s;
+        }
+
+        .calculator input:hover {
+            background-color: #e0e0e0;
+            box-shadow: -8px -8px 20px rgba(255, 255, 255, 0.2), 5px 5px 20px rgba(230, 226, 226, 0.4);
+        }
+
+        .display {
+            display: flex;
+            justify-content: flex-end;
+            margin: 20px 0;
+        }
+
+        .display input {
+            text-align: right;
+            flex: 1;
+            font-size: 45px;
+            box-shadow: none;
+        }
+
+        input.num-btnz {
+            width: 135px;
+        }
+
+        input.num-btncl {
+            background-color: #205b7a;
+            border: 3px solid #205b7a;
+            color: white;
+        }
+
+        input.num-btnDe {
+            background-color: #205b7a;
+            border: 3px solid #205b7a;
+            color: white;
+        }
+
+        input.num-btnpt {
+            background-color: #205b7a;
+            border: 3px solid #205b7a;
+            color: white;
+        }
+
+        input.num-btnd {
+            background-color: #205b7a;
+            border: 3px solid #205b7a;
+            color: white;
+        }
+
+        input.num-btnm {
+            background-color: #a2bbcf;
+            border: 3px solid #a2bbcf;
+        }
+
+        input.num-btnp {
+            background-color: #a2bbcf;
+            border: 3px solid #a2bbcf;
+        }
+
+        @media (max-width: 768px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 22%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 22%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 22%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 47%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 738.40px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 22%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 22%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 22%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 47%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 656.80px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 21.7%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 21.7%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 21.7%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 46%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 604.80px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 21%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 21%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 21%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 45%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 20.7%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 20.7%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 20.7%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 45%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 466.40px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 20%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 20%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 20%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 44%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 462.40px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 20%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 20%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 20%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 45%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 405.60px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 19.7%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 19.7%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 19.7%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 45%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 384.80px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 19%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 19%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 19%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 44%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 343.20px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 18.7%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 18.7%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 18.7%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 43%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 328px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 18%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 18%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 18%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 42%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 298.40px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 17.7%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 17.7%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 17.7%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 41%;
+                height: 65px;
+            }
+        }
+
+        @media (max-width: 287.20px) {
+            .calculator {
+                width: 65%;
+                height: 80vh;
+            }
+
+            input.num-btncl {
+                width: 17%;
+                height: 65px;
+            }
+
+            input.num-btnm {
+                width: 17%;
+                height: 65px;
+            }
+
+            input.num-btn {
+                width: 17%;
+                height: 65px;
+            }
+
+            input.num-btnz {
+                width: 40%;
+                height: 65px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="calculator">
+            <div class="display"><input type="text" id="result"></div>
+            <br>
+            <div>
+                <input type="button" value="AC" class="num-btncl" onclick="clearInput()">
+                <input type="button" value="DE" class="num-btncl" onclick="deleteInput()">
+                <input type="button" value="." class="num-btncl" onclick="appendNum('.')">
+                <input type="button" value="/" class="num-btncl" onclick="dv()">
+            </div>  
+            <div>
+                <input type="button" value="7" class="num-btn" onclick="appendNum(7)">
+                <input type="button" value="8" class="num-btn" onclick="appendNum(8)">
+                <input type="button" value="9" class="num-btn" onclick="appendNum(9)">
+                <input type="button" value="x" class="num-btnm" onclick="multiply()">
+            </div>
+            <div>
+                <input type="button" value="4" class="num-btn" onclick="appendNum(4)">
+                <input type="button" value="5" class="num-btn" onclick="appendNum(5)">
+                <input type="button" value="6" class="num-btn" onclick="appendNum(6)">
+                <input type="button" value="-" class="num-btnm" onclick="subtract()">
+            </div>
+            <div>
+                <input type="button" value="1" class="num-btn" onclick="appendNum(1)">
+                <input type="button" value="2" class="num-btn" onclick="appendNum(2)">
+                <input type="button" value="3" class="num-btn" onclick="appendNum(3)">
+                <input type="button" value="+" class="num-btnm" onclick="add()">
+            </div>
+
+           <div>
+                <input type="button" value="0" class="num-btn" onclick="appendNum(0)">
+                <input type="button" value="00" class="num-btnz" onclick="appendNum('00')">
+                <input type="button" value="=" class="num-btnm" onclick="calculate()">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentInput = "";
+        let currentOperator = "";
+
+        function appendNum(number) {
+            currentInput += number === '00' ? '00' : number;
+            document.getElementById("result").value = currentInput;
+        }
+        function add() {
+            currentOperator = "+";
+            currentInput += currentOperator;
+            document.getElementById("result").value = currentInput;
+        }
+        function subtract() {
+            currentOperator = "-";
+            currentInput += currentOperator;
+            document.getElementById("result").value = currentInput;
+        }
+        function multiply() {
+            currentOperator = "*";
+            currentInput += currentOperator;
+            document.getElementById("result").value = currentInput;
+        }
+        function dv() {
+            currentOperator = "/";
+            currentInput += currentOperator;
+            document.getElementById("result").value = currentInput;
+        }
+        function calculate() {
+            const result = eval(currentInput);
+            document.getElementById("result").value = result;
+            currentOperator = "";
+            currentInput = result.toString();
+        }
+        function clearInput() {
+            currentOperator = "";
+            currentInput = "";
+            document.getElementById("result").value = "";
+        }
+        function deleteInput() {
+            currentInput = currentInput.slice(0, -1);
+            document.getElementById("result").value = currentInput;
+        }
+    </script>
+</body>
+</html>
